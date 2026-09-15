@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>HJLM | Ripples of Devotion</title>
-  <link rel="icon" href="HJLM_Icon_RED_RGB.svg" type="image/svg+xml">
+  <link id="app-favicon" rel="icon" type="image/svg+xml">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
   <script src="https://unpkg.com/p5.js-svg@1.1.1"></script>
   <script id="marom-embedded-font">
@@ -82,6 +82,14 @@
       padding-bottom: 15px;
       margin-bottom: 20px;
       flex-shrink: 0;
+    }
+
+    .app-logo {
+      width: 44px;
+      height: 44px;
+      margin-top: -6px;
+      flex-shrink: 0;
+      display: block;
     }
 
     h1 {
@@ -200,6 +208,12 @@
 
     .color-swatch.active { box-shadow: 0 0 0 2px #141414, 0 0 0 4px #FFFFFF; z-index: 10; }
 
+    .silver-swatch {
+      border-color: #8b9097;
+      background:
+        linear-gradient(110deg, #2b2f35 0%, #8c949d 16%, #f3f6f8 29%, #737b84 43%, #dce2e7 57%, #ffffff 67%, #7d858e 82%, #25292e 100%);
+    }
+
     .accordion-header {
       background: #1a1a1a;
       border: 1px solid #96141E;
@@ -235,22 +249,52 @@
 
     .export-header-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 6px;
-      align-items: end;
+      align-items: stretch;
       margin-bottom: 8px;
     }
 
     .export-header-row .section-title {
-      grid-column: span 2;
+      grid-column: span 1;
       margin: 0;
       padding-bottom: 5px;
+      align-self: end;
+    }
+
+    .settings-save-btn {
+      grid-column: span 2;
+      width: 100% !important;
+      min-height: 58px;
+      height: 58px;
+      padding: 8px 6px !important;
+      font-size: 11px !important;
+      font-weight: 700;
+      border: 2px solid #D21919 !important;
+      color: #FFFFFF !important;
+      background: #D21919 !important;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .settings-save-btn:hover {
+      background: #96141E !important;
+      border-color: #D21919 !important;
+    }
+
+    .settings-save-btn.drag-over {
+      background: #FFFFFF !important;
+      color: #141414 !important;
     }
 
     .cmyk-toggle-btn {
       grid-column: span 2;
       width: 100% !important;
-      padding: 10px 0 !important;
+      min-height: 58px;
+      height: 58px;
+      padding: 8px 6px !important;
       font-size: 11px !important;
       font-weight: 700;
       border: 2px solid #96141E !important;
@@ -262,8 +306,9 @@
     }
 
     .cmyk-toggle-btn:hover {
-      background: #2a2a2a !important;
+      background: #D21919 !important;
       border-color: #D21919 !important;
+      color: #FFFFFF !important;
     }
 
     .cmyk-toggle-btn.active {
@@ -359,7 +404,31 @@
 
 <div id="sidebar">
   <div class="header-wrapper">
-    <img src="HJLM_Icon_RED_RGB.svg" style="width: 44px; height: 44px; margin-top: -6px;" alt="HJLM Icon">
+    <svg class="app-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1053.3 1080" aria-label="HJLM Icon" role="img">
+      <g>
+        <path fill="none" d="M1053,516.8c0-1.1,0-2.1,0-3.2,0,1.1,0,2.1,0,3.2h0Z"/>
+        <path fill="#d21919" d="M97.1,245l38.2,5.4c66.1-80.7,155.9-141.2,261-167.2,183.6-46.8,384.9,24.8,492.1,181.5,52.4,73.4,79.4,162.6,80.4,252.1h84.1c0-1.1,0-2.1,0-3.2,0-5.1-.2-10.1-.4-15.1-1.5-37.7-7.2-76.1-17.5-115C982.4,176.2,794.3,23.3,586.1,2.4c-16-1.5-32.2-2.4-48.6-2.4-23,0-46,1.6-69.1,5C312.3,23.9,177.3,116.8,97.1,245Z"/>
+        <path fill="#d21919" d="M573.2,377.8l261.1-32.8-104.6-163.5h-38.1l2.1,46.2,29.6,8.8,24.9,68.4-212.3-3v-129.2l-100.1-5.7,8.9,90.5c1.2,12,10.4,21.6,22.4,23.3l33.8,4.8v16.3l-365.4-51.6c-6.6,8-13,16.2-19.1,24.6l-27.6-15.9c2.8-4.7,5.6-9.4,8.5-14.1l-79.2-11.2L.4,264l34.8,17.8,21.8-12.1,326.5,95.2,22.5,151.8h112.2c16.4-18.6,28.7-40.8,35.2-65.2l19.8-73.8Z"/>
+        <path fill="#d21919" d="M116.2,275c6.1-8.4,12.5-16.6,19.1-24.6l-38.2-5.4c-2.9,4.6-5.8,9.3-8.5,14.1l27.6,15.9Z"/>
+      </g>
+      <g>
+        <path fill="#d21919" d="M501.8,1079.3c2.4.2,4.9.3,7.3.5,1.3,0,2.6.1,3.9.1.6,0,1.3,0,1.9,0v-164.5c-111.5,4.9-171.7,49.8-232.9,98.6,2.8,1.6,5.7,3.2,8.6,4.8.5.3,1.1.6,1.6.9,3.7,2,7.5,3.9,11.3,5.9.9.5,1.8.9,2.8,1.4,3.6,1.8,7.2,3.5,10.9,5.2.8.4,1.6.8,2.4,1.1,4.4,2,8.8,4,13.2,5.9,0,0,0,0,0,0,1.2.5,2.4,1,3.6,1.5,0,0,0,0,0,0,4.4,1.8,8.9,3.6,13.4,5.3,1,.4,2,.8,3.1,1.2,3,1.1,6.1,2.2,9.1,3.3.6.2,1.2.4,1.8.6,4.6,1.6,9.2,3.2,13.9,4.7,2.1.7,4.2,1.3,6.3,2,3.8,1.2,7.7,2.3,11.5,3.4,0,0,0,0,0,0,0,0,0,0,0,0,2.2.6,4.3,1.2,6.5,1.7,1.9.5,3.7,1,5.6,1.5,0,0,.1,0,.2,0,0,0,.1,0,.2,0,2.6.7,5.2,1.3,7.8,1.9,1.4.3,2.8.7,4.2,1,.2,0,.5.1.7.2,2.1.5,4.2.9,6.3,1.3,1.8.4,3.6.8,5.4,1.2.4,0,.7.1,1.1.2,0,0,0,0,.1,0,3.7.7,7.5,1.5,11.3,2.1.6.1,1.2.2,1.9.3,3.6.6,7.2,1.2,10.8,1.8.9.1,1.7.2,2.6.4.8.1,1.7.2,2.5.3,2.5.4,5.1.7,7.6,1.1,1.1.1,2.3.3,3.4.4,3.1.4,6.3.8,9.5,1.1,1.5.1,2.9.3,4.4.4,2.3.2,4.6.4,6.9.6.5,0,1.1.1,1.6.1,1.9.1,3.8.2,5.7.4Z"/>
+        <path fill="#d21919" d="M1035,697.2c-17.7,8.6-35.7,16.8-53.9,24.5-134.8,57-277.6,87.2-424.8,89.7v62.7c130.6,5.3,199.5,60.3,266.2,113.7,1.3,1,2.6,2.1,3.9,3.1,2.3-1.6,4.6-3.1,6.9-4.8,1.2-.8,2.4-1.7,3.6-2.6,1.5-1.1,3-2.2,4.5-3.3,3.6-2.7,7.3-5.4,10.8-8.2,0,0,0,0,.1-.1,0,0,0,0,0,0,0,0,0,0,0,0,1.4-1.1,2.8-2.2,4.2-3.3,0,0,0,0,0,0,4.1-3.3,8.2-6.6,12.2-10,.7-.6,1.5-1.2,2.2-1.9,4.1-3.5,8.1-7,12.1-10.6,12.3-11.1,24-22.9,35.1-35.1,3.6-4,7.1-8,10.6-12.1.6-.7,1.3-1.5,1.9-2.2,3.4-4,6.7-8.1,10-12.2,0,0,0,0,0,0,1.1-1.4,2.2-2.8,3.3-4.2,0,0,0,0,0,0,2.8-3.6,5.6-7.3,8.3-11,1.1-1.5,2.2-3,3.3-4.5.9-1.2,1.7-2.4,2.6-3.6,4.2-5.9,8.3-12,12.2-18.1.6-.9,1.2-1.9,1.8-2.8,1.5-2.3,3-4.7,4.4-7.1.6-.9,1.2-1.9,1.7-2.8,1.9-3.2,3.8-6.4,5.7-9.6,0-.1.1-.2.2-.3,1.8-3.2,3.6-6.3,5.3-9.5,0,0,0,0,0,0,.5-1,1-1.9,1.6-2.9,1.3-2.5,2.6-4.9,3.9-7.4,0-.2.2-.4.3-.6.4-.8.8-1.6,1.2-2.4,0,0,0,0,0,0,1.7-3.2,3.3-6.5,4.9-9.8,0-.1.1-.3.2-.4,1.6-3.4,3.2-6.8,4.8-10.2,0,0,0,0,0,0,.5-1,.9-2,1.4-3,.6-1.3,1.1-2.6,1.7-3.8.6-1.3,1.1-2.6,1.7-3.9.4-1,.9-2,1.3-3.1,2.3-5.4,4.4-10.8,6.5-16.3.6-1.6,1.3-3.2,1.9-4.9.4-1.1.8-2.1,1.1-3.2.7-1.9,1.4-3.9,2-5.8.3-.7.5-1.4.8-2.2.4-1.1.7-2.1,1.1-3.2.6-1.8,1.2-3.7,1.8-5.5,1-3.1,2-6.1,2.9-9.2.7-2.4,1.4-4.8,2.1-7.1,0,0,0-.1,0-.2.3-1,.6-2.1.9-3.1.5-1.9,1-3.8,1.6-5.7Z"/>
+        <path fill="#d21919" d="M248.7,987.8c66.7-53.4,135.6-108.4,266.2-113.7v-62.7c-147.2-2.6-290-32.7-424.8-89.7-18.3-7.7-36.4-16-54.2-24.6,0,0,0,0,0,.1,1.1,4.1,2.3,8.3,3.5,12.4.3,1.1.7,2.3,1,3.4,0,.2.1.4.2.5,1.2,4,2.5,8,3.8,12,.2.5.3,1,.5,1.5,1.5,4.6,3.1,9.1,4.7,13.6.2.5.4,1,.6,1.5,1.6,4.3,3.2,8.7,5,13,0,0,0,0,0,0,2.6,6.6,5.4,13.1,8.3,19.6h0s0,0,0,0c.3.7.7,1.5,1,2.2,1.4,3,2.8,6,4.2,8.9.7,1.5,1.4,3,2.2,4.4.8,1.7,1.7,3.4,2.6,5.2.7,1.3,1.3,2.6,2,3.9.2.3.3.7.5,1,.6,1.1,1.2,2.3,1.8,3.4,0,0,0,0,0,0,1.9,3.5,3.8,7.1,5.7,10.6,0,0,0,0,0,0,0,0,0,.1.1.2.4.7.8,1.4,1.2,2.1,2.6,4.6,5.3,9.2,8,13.7.1.2.3.5.4.7,2.7,4.5,5.5,9,8.4,13.4,0,0,0,0,0,0h0c3.7,5.7,7.5,11.4,11.4,16.9,0,0,0,0,0,0,2,2.9,4.1,5.7,6.2,8.6,0,0,0,0,0,0,0,0,0,0,0,0,2.3,3.2,4.7,6.3,7.1,9.4.9,1.2,1.8,2.4,2.7,3.5,2.7,3.5,5.5,6.9,8.3,10.4,0,0,0,0,0,0,.3.4.7.8,1.1,1.2,2.1,2.6,4.3,5.1,6.5,7.6,0,0,0,0,0,0,5,5.8,10.2,11.5,15.5,17,.8.8,1.5,1.6,2.3,2.4,1.9,2,3.9,4,5.8,5.9.8.8,1.5,1.6,2.3,2.3,2.3,2.3,4.6,4.5,6.9,6.7,1.1,1.1,2.2,2.1,3.3,3.2,1.7,1.6,3.4,3.2,5.1,4.7,1,.9,1.9,1.8,2.9,2.6,2.7,2.4,5.4,4.8,8.1,7.2,3.1,2.7,6.3,5.4,9.5,8,6.4,5.3,12.9,10.4,19.5,15.3,3.8,2.8,7.6,5.6,11.4,8.3,1.2.8,2.3,1.6,3.5,2.4,1.2.8,2.4,1.6,3.6,2.5,1.3-1.1,2.6-2.1,4-3.2Z"/>
+        <path fill="#d21919" d="M738.2,1039.2c2.1-.9,4.2-1.9,6.3-2.8,5.4-2.4,10.8-4.9,16.2-7.4,3.7-1.8,7.4-3.6,11-5.5,3.6-1.9,7.3-3.8,10.9-5.8.2,0,.3-.2.4-.3,2-1.1,4.1-2.3,6.1-3.4-61.2-48.8-121.4-93.6-232.8-98.5v164.5c.6,0,1.1,0,1.7,0,1.3,0,2.6,0,3.9-.1,2.5-.1,4.9-.3,7.3-.5,1.9-.1,3.8-.2,5.7-.4.5,0,1.1,0,1.6-.1,2.3-.2,4.6-.4,6.9-.6,1.5-.1,2.9-.2,4.4-.4,3.2-.3,6.3-.7,9.5-1.1,1.1-.1,2.3-.2,3.4-.4,2.6-.3,5.1-.7,7.6-1.1.8-.1,1.7-.2,2.5-.3.9-.1,1.7-.2,2.6-.4,3.6-.5,7.2-1.1,10.8-1.8.6-.1,1.2-.2,1.9-.3,3.8-.7,7.5-1.4,11.3-2.1,0,0,0,0,.1,0,.4,0,.7-.1,1.1-.2,1.8-.4,3.6-.8,5.4-1.2,2.1-.4,4.2-.9,6.3-1.3.2,0,.5-.1.7-.2,1.4-.3,2.8-.7,4.2-1,2.6-.6,5.2-1.2,7.8-1.9,0,0,.1,0,.2,0,0,0,.1,0,.2,0,1.9-.5,3.8-1,5.6-1.5,2.2-.6,4.4-1.1,6.5-1.7,0,0,0,0,0,0,0,0,0,0,0,0,3.9-1.1,7.7-2.3,11.5-3.4,2.1-.7,4.2-1.3,6.3-2,4.6-1.5,9.3-3,13.9-4.7.6-.2,1.2-.4,1.8-.6,3.1-1.1,6.1-2.2,9.1-3.3,1-.4,2-.8,3.1-1.2,4.5-1.7,8.9-3.5,13.4-5.3,0,0,0,0,0,0,1.2-.5,2.4-1,3.6-1.5,0,0,0,0,0,0,0,0,0,0,0,0Z"/>
+        <path fill="#d21919" d="M18.5,563.5s0,0,0,.1c0,2.1,0,4.2,0,6.4,0,2.1,0,4.2,0,6.4,0,1.5.1,3,.2,4.5,0,0,0,0,0,0,0,.7,0,1.5,0,2.2,0,2,.1,4.1.2,6.1,0,1.8.2,3.6.3,5.4.1,2.4.3,4.8.5,7.2.1,2,.3,3.9.5,5.9.2,2.2.4,4.4.6,6.7.1,1.5.3,3.1.5,4.6,0,.5.1,1.1.2,1.6,0,.5.1,1,.2,1.5.2,1.6.3,3.1.5,4.7.2,1.3.3,2.6.5,3.9.1.9.2,1.7.3,2.6.2,1.2.3,2.5.5,3.7,0,.7.2,1.4.3,2.1.3,2.1.6,4.1,1,6.2,26.5,13.8,53.6,26.6,81.3,38.4,136,57.5,280.4,86.7,429.3,86.7s293.4-29.2,429.3-86.7c27.6-11.7,54.6-24.4,81-38.2.8-4.9,1.5-9.8,2.2-14.7,0,0,0,0,0,0,.1-1.2.3-2.3.4-3.5.2-1.5.3-3,.5-4.5.2-1.4.3-2.7.5-4.1.1-1.2.2-2.3.4-3.5.8-7.8,1.4-15.7,1.8-23.6,0-1.2.1-2.3.2-3.5.1-2.9.2-5.9.3-8.8,0-1.2,0-2.4.1-3.5,0-2.4,0-4.7,0-7.1,0-1.6,0-3.3,0-4.9h0s-1034,0-1034,0Z"/>
+      </g>
+    </svg>
+    <script>
+      (function(){
+        var logo = document.querySelector('.app-logo');
+        var favicon = document.getElementById('app-favicon');
+        if (logo && favicon) {
+          var source = new XMLSerializer().serializeToString(logo.cloneNode(true));
+          favicon.href = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(source);
+        }
+      })();
+    </script>
     <h1>Ripples of Devotion</h1>
   </div>
 
@@ -474,6 +543,7 @@
         <label>TEXT COLOR</label>
         <div class="color-picker" id="textColors">
           <div class="color-swatch active" style="background: #FFFFFF; border: 1px solid #ccc;" onclick="setTextColor('#FFFFFF', this)" title="White"></div>
+          <div class="color-swatch silver-swatch" onclick="setTextColor('SILVER_METAL', this)" title="Silver"></div>
           <div class="color-swatch" style="background: #D21919;" onclick="setTextColor('#D21919', this)" title="Red"></div>
           <div class="color-swatch" style="background: #282828;" onclick="setTextColor('#282828', this)" title="Black"></div>
         </div>
@@ -521,6 +591,7 @@
         <div class="color-swatch" data-color="#96141E" style="background: #96141E;" onclick="setLineColor('#96141E', this)" title="Bordeaux"></div>
         <div class="color-swatch" data-color="#282828" style="background: #282828;" onclick="setLineColor('#282828', this)" title="Black"></div>
         <div class="color-swatch" data-color="#e5e5e5" style="background: #e5e5e5;" onclick="setLineColor('#e5e5e5', this)" title="Gray"></div>
+        <div class="color-swatch silver-swatch" data-color="SILVER_METAL" onclick="setLineColor('SILVER_METAL', this)" title="Silver"></div>
       </div>
     </div>
 
@@ -595,7 +666,9 @@
   <div class="export-wrapper">
     <div class="export-header-row">
       <div class="section-title" style="margin: 0; border-bottom: none; color: #FFFFFF;">EXPORT</div>
+      <button id="saveSettingsBtn" class="settings-save-btn" onclick="handleSettingsButton(event)" title="Click: save settings · Shift-click or drop a settings file here: load settings">SAVE SETTINGS</button>
       <button id="cmykToggle" class="cmyk-toggle-btn" onclick="toggleCmykMode()">PRINT (CMYK)</button>
+      <input type="file" id="settingsFileInput" accept=".json,application/json" style="display:none" onchange="loadSettingsFile(event)">
     </div>
     <div class="export-row">
       <button id="rec-btn" onclick="toggleRecord(false)">REC VIDEO</button>
@@ -649,6 +722,8 @@
   let currentH = 2160;
 
   let liveTextColor = '#FFFFFF';
+  const SILVER_METAL = 'SILVER_METAL';
+  const SILVER_FALLBACK = '#9EA5AD';
 
   let isCmykMode = false;
 
@@ -950,16 +1025,23 @@
     let ops = [];
     if (opts.bg) ops.push(hexToCmykPdf(opts.bg) + ' k 0 0 ' + W + ' ' + H + ' re f');
     if (opts.textBelow) ops.push('q ' + W + ' 0 0 ' + H + ' 0 0 cm /ImB Do Q');
-    for (let qd of opts.quads) {
-      let p = qd.pts;
-      let f = function (x) { return (+x).toFixed(2); };
-      let fy = function (y) { return (H - y).toFixed(2); };
-      ops.push(hexToCmykPdf(qd.hex) + ' k ' +
-        f(p[0]) + ' ' + fy(p[1]) + ' m ' +
-        f(p[2]) + ' ' + fy(p[3]) + ' l ' +
-        f(p[4]) + ' ' + fy(p[5]) + ' l ' +
-        f(p[6]) + ' ' + fy(p[7]) + ' l h f');
+
+    if (opts.lineRaster) {
+      // Silver is a shader effect, so preserve its appearance as a raster layer.
+      ops.push('q ' + W + ' 0 0 ' + H + ' 0 0 cm /ImL Do Q');
+    } else {
+      for (let qd of opts.quads) {
+        let p = qd.pts;
+        let f = function (x) { return (+x).toFixed(2); };
+        let fy = function (y) { return (H - y).toFixed(2); };
+        ops.push(hexToCmykPdf(qd.hex) + ' k ' +
+          f(p[0]) + ' ' + fy(p[1]) + ' m ' +
+          f(p[2]) + ' ' + fy(p[3]) + ' l ' +
+          f(p[4]) + ' ' + fy(p[5]) + ' l ' +
+          f(p[6]) + ' ' + fy(p[7]) + ' l h f');
+      }
     }
+
     if (opts.textAbove) ops.push('q ' + W + ' 0 0 ' + H + ' 0 0 cm /ImA Do Q');
     const content = enc.encode(ops.join('\n'));
 
@@ -980,6 +1062,7 @@
       return { img: await deflateBytes(cmyk), mask: await deflateBytes(mask), w: t.w, h: t.h };
     }
     let below = opts.textBelow ? await makeImagePair(opts.textBelow) : null;
+    let lineRaster = opts.lineRaster ? await makeImagePair(opts.lineRaster) : null;
     let above = opts.textAbove ? await makeImagePair(opts.textAbove) : null;
 
     // ---- assemble objects with byte-accurate xref offsets ----
@@ -1001,6 +1084,7 @@
       xobjEntries.push('/' + name + ' ' + imgNum + ' 0 R');
     }
     if (below) registerImage(below, 'ImB');
+    if (lineRaster) registerImage(lineRaster, 'ImL');
     if (above) registerImage(above, 'ImA');
     let totalObjs = nextObj - 1;
 
@@ -1047,7 +1131,19 @@
     btn.style.pointerEvents = 'none';
     try {
       let quads = [];
-      generateGeometry(null, false, quads);
+      let lineRaster = null;
+
+      if (isSilver(lineColor)) {
+        let lg = createGraphics(width, height);
+        if (typeof lg.pixelDensity === 'function') lg.pixelDensity(1);
+        lg.clear();
+        generateGeometry(lg, false);
+        lg.loadPixels();
+        lineRaster = { rgba: new Uint8ClampedArray(lg.pixels), w: lg.width, h: lg.height };
+        lg.remove();
+      } else {
+        generateGeometry(null, false, quads);
+      }
 
       let textRel = document.getElementById('textLayerRel').value;
       let hasText = document.getElementById('liveText').value.trim() !== '';
@@ -1076,6 +1172,7 @@
         w: width, h: height,
         bg: isTransparentBg ? null : bgColor,
         quads: quads,
+        lineRaster: lineRaster,
         textBelow: textBelow,
         textAbove: textAbove
       });
@@ -1086,6 +1183,12 @@
     } finally {
       btn.innerText = isCmykMode ? 'PDF' : 'SVG';
       btn.style.pointerEvents = 'auto';
+      if (isSilver(lineColor) || isSilver(liveTextColor)) {
+        setTimeout(function () {
+          resetSilverFxRenderer();
+          if (typeof redraw === 'function') redraw();
+        }, 0);
+      }
     }
   }
 
@@ -1179,6 +1282,344 @@
     if (e.key === 'Enter' && this.value.split('\n').length >= 3) {
       e.preventDefault();
     }
+  });
+
+  // ============================================================
+  // UNDO / REDO
+  // Cmd+Z / Ctrl+Z = undo
+  // Cmd+Shift+Z / Ctrl+Shift+Z = redo
+  // Stores editor controls only; export actions do not enter history.
+  // ============================================================
+  const HISTORY_LIMIT = 100;
+  let undoStack = [];
+  let redoStack = [];
+  let historyApplying = false;
+  let historyInputTimer = null;
+
+  function captureEditorState() {
+    let controls = {};
+    document.querySelectorAll('#sidebar input, #sidebar select, #sidebar textarea').forEach(function (el) {
+      if (!el.id || el.type === 'file') return;
+      if (el.type === 'checkbox' || el.type === 'radio') controls[el.id] = { checked: !!el.checked };
+      else controls[el.id] = { value: el.value };
+    });
+
+    return {
+      controls: controls,
+      vars: {
+        bgColor: bgColor,
+        isTransparentBg: isTransparentBg,
+        lineColor: lineColor,
+        currentTarget: currentTarget,
+        isRotated: isRotated,
+        gridIsHorizontal: gridIsHorizontal,
+        isAnimating: isAnimating,
+        isReversed: isReversed,
+        waveDirMod: waveDirMod,
+        currentTextAlign: currentTextAlign,
+        liveTextColor: liveTextColor,
+        isCmykMode: isCmykMode
+      }
+    };
+  }
+
+  function stateFingerprint(state) {
+    return JSON.stringify(state);
+  }
+
+  function getSettingsFilename() {
+    let now = new Date();
+    let yyyy = now.getFullYear();
+    let mm = String(now.getMonth() + 1).padStart(2, '0');
+    let dd = String(now.getDate()).padStart(2, '0');
+    let hr = String(now.getHours()).padStart(2, '0');
+    let min = String(now.getMinutes()).padStart(2, '0');
+    let sec = String(now.getSeconds()).padStart(2, '0');
+    return `HJLM_SETTINGS_${yyyy}-${mm}-${dd}_${hr}.${min}.${sec}.json`;
+  }
+
+  function saveEditorSettings() {
+    flushPendingHistory();
+    let payload = {
+      app: 'HJLM | Ripples of Devotion',
+      version: 1,
+      savedAt: new Date().toISOString(),
+      state: captureEditorState()
+    };
+    let blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    downloadBlob(blob, getSettingsFilename());
+  }
+
+  function openSettingsFilePicker() {
+    let input = document.getElementById('settingsFileInput');
+    if (input) input.click();
+  }
+
+  function handleSettingsButton(event) {
+    // One visible button only: click saves; Shift-click loads.
+    if (event && event.shiftKey) openSettingsFilePicker();
+    else saveEditorSettings();
+  }
+
+  function applyLoadedSettingsData(data) {
+    let state = data && data.state ? data.state : data;
+    if (!state || typeof state !== 'object' || !state.controls || !state.vars) {
+      throw new Error('This does not look like a valid HJLM settings file.');
+    }
+    flushPendingHistory();
+    applyEditorState(state);
+    pushHistorySnapshot();
+  }
+
+  function loadSettingsFile(event) {
+    let input = event && event.target ? event.target : document.getElementById('settingsFileInput');
+    let file = input && input.files ? input.files[0] : null;
+    if (!file) return;
+    let reader = new FileReader();
+    reader.onload = function () {
+      try {
+        let data = JSON.parse(String(reader.result || ''));
+        applyLoadedSettingsData(data);
+      } catch (err) {
+        console.error('Load settings error:', err);
+        alert('Could not load settings: ' + err.message);
+      } finally {
+        if (input) input.value = '';
+      }
+    };
+    reader.onerror = function () {
+      alert('Could not read the settings file.');
+      if (input) input.value = '';
+    };
+    reader.readAsText(file);
+  }
+
+  function installSettingsDropTarget() {
+    let btn = document.getElementById('saveSettingsBtn');
+    if (!btn) return;
+    ['dragenter', 'dragover'].forEach(function (name) {
+      btn.addEventListener(name, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        btn.classList.add('drag-over');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (name) {
+      btn.addEventListener(name, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        btn.classList.remove('drag-over');
+      });
+    });
+    btn.addEventListener('drop', function (e) {
+      let file = e.dataTransfer && e.dataTransfer.files ? e.dataTransfer.files[0] : null;
+      if (!file) return;
+      let reader = new FileReader();
+      reader.onload = function () {
+        try {
+          applyLoadedSettingsData(JSON.parse(String(reader.result || '')));
+        } catch (err) {
+          console.error('Load settings error:', err);
+          alert('Could not load settings: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  function pushHistorySnapshot() {
+    if (historyApplying) return;
+    let state = captureEditorState();
+    let fp = stateFingerprint(state);
+    if (undoStack.length && stateFingerprint(undoStack[undoStack.length - 1]) === fp) return;
+    undoStack.push(state);
+    if (undoStack.length > HISTORY_LIMIT) undoStack.shift();
+    redoStack.length = 0;
+  }
+
+  function syncEditorUiAfterHistory() {
+    // Background swatch + transparency preview.
+    document.querySelectorAll('#bgColors .color-swatch').forEach(function (s) {
+      let c = s.getAttribute('data-color');
+      s.classList.toggle('active', isTransparentBg ? c === 'TRANSPARENT' : c === bgColor);
+    });
+    let main = document.querySelector('#canvas-container canvas');
+    if (main) main.classList.toggle('transparent-bg', isTransparentBg);
+
+    // Line swatch.
+    document.querySelectorAll('#lineColors .color-swatch').forEach(function (s) {
+      s.classList.toggle('active', s.getAttribute('data-color') === lineColor);
+    });
+
+    // Text color swatch.
+    document.querySelectorAll('#textColors .color-swatch').forEach(function (s) {
+      let oc = s.getAttribute('onclick') || '';
+      s.classList.toggle('active', oc.indexOf("'" + liveTextColor + "'") !== -1);
+    });
+
+    // Text alignment.
+    document.querySelectorAll('#textAlignBtns .btn-mini').forEach(function (btn) {
+      let oc = btn.getAttribute('onclick') || '';
+      btn.classList.toggle('active', oc.indexOf("'" + currentTextAlign + "'") !== -1);
+    });
+    let ta = document.getElementById('liveText');
+    if (ta) ta.style.textAlign = currentTextAlign;
+
+    // Target layer.
+    document.querySelectorAll('.target-btn').forEach(function (btn) {
+      let oc = btn.getAttribute('onclick') || '';
+      btn.classList.toggle('active', oc.indexOf("'" + currentTarget + "'") !== -1);
+    });
+
+    let gridBtn = document.getElementById('grid-dir-btn');
+    if (gridBtn) gridBtn.innerText = gridIsHorizontal ? 'GRID: HORIZONTAL' : 'GRID: VERTICAL';
+
+    let waveBtn = document.getElementById('wave-dir-btn');
+    if (waveBtn) waveBtn.innerText = waveDirMod === 1 ? 'WAVE DIR: L TO R' : 'WAVE DIR: R TO L';
+
+    let animBtn = document.getElementById('anim-toggle-btn');
+    if (animBtn) {
+      animBtn.innerText = isAnimating ? 'ANIM: ON' : 'ANIM: OFF';
+      animBtn.classList.toggle('active', isAnimating);
+    }
+
+    let reverseBtn = document.getElementById('anim-reverse-btn');
+    if (reverseBtn) {
+      reverseBtn.innerText = isReversed ? 'DIR: DOWN' : 'DIR: UP';
+      reverseBtn.classList.toggle('active', isReversed);
+    }
+
+    // PRINT mode UI, without toggling the state itself.
+    let cmykBtn = document.getElementById('cmykToggle');
+    let pngBtn = document.getElementById('pngExportBtn');
+    let recBtn = document.getElementById('rec-btn');
+    let recLoopBtn = document.getElementById('rec-loop-btn');
+    let svgBtn = document.getElementById('svgExportBtn');
+    if (cmykBtn && svgBtn) {
+      if (isCmykMode) {
+        cmykBtn.innerText = 'PRINT (CMYK): ON';
+        cmykBtn.classList.add('active');
+        svgBtn.innerText = 'PDF';
+        svgBtn.title = 'Vector PDF with true CMYK ink values (opens in Illustrator as CMYK)';
+        if (pngBtn) { pngBtn.style.opacity = '0.3'; pngBtn.style.pointerEvents = 'none'; }
+        if (recBtn) { recBtn.style.opacity = '0.3'; recBtn.style.pointerEvents = 'none'; }
+        if (recLoopBtn) { recLoopBtn.style.opacity = '0.3'; recLoopBtn.style.pointerEvents = 'none'; }
+      } else {
+        cmykBtn.innerText = 'PRINT (CMYK): OFF';
+        cmykBtn.classList.remove('active');
+        svgBtn.innerText = 'SVG';
+        svgBtn.title = '';
+        if (pngBtn) { pngBtn.style.opacity = '1'; pngBtn.style.pointerEvents = 'auto'; }
+        if (recBtn) { recBtn.style.opacity = '1'; recBtn.style.pointerEvents = 'auto'; }
+        if (recLoopBtn) { recLoopBtn.style.opacity = '1'; recLoopBtn.style.pointerEvents = 'auto'; }
+      }
+    }
+
+    updateTextareaWeight();
+    updatePosControlVisibility();
+  }
+
+  function applyEditorState(state) {
+    if (!state) return;
+    historyApplying = true;
+    try {
+      Object.keys(state.controls || {}).forEach(function (id) {
+        let el = document.getElementById(id);
+        if (!el) return;
+        let saved = state.controls[id];
+        if (Object.prototype.hasOwnProperty.call(saved, 'checked')) el.checked = !!saved.checked;
+        else if (Object.prototype.hasOwnProperty.call(saved, 'value')) el.value = saved.value;
+      });
+
+      let v = state.vars || {};
+      if (v.bgColor !== undefined) bgColor = v.bgColor;
+      if (v.isTransparentBg !== undefined) isTransparentBg = v.isTransparentBg;
+      if (v.lineColor !== undefined) lineColor = v.lineColor;
+      if (v.currentTarget !== undefined) currentTarget = v.currentTarget;
+      if (v.isRotated !== undefined) isRotated = v.isRotated;
+      if (v.gridIsHorizontal !== undefined) gridIsHorizontal = v.gridIsHorizontal;
+      if (v.isAnimating !== undefined) isAnimating = v.isAnimating;
+      if (v.isReversed !== undefined) isReversed = v.isReversed;
+      if (v.waveDirMod !== undefined) waveDirMod = v.waveDirMod;
+      if (v.currentTextAlign !== undefined) currentTextAlign = v.currentTextAlign;
+      if (v.liveTextColor !== undefined) liveTextColor = v.liveTextColor;
+      if (v.isCmykMode !== undefined) isCmykMode = v.isCmykMode;
+
+      updateCanvasSize();
+      syncEditorUiAfterHistory();
+      resetSilverFxRenderer();
+    } finally {
+      historyApplying = false;
+    }
+  }
+
+  function flushPendingHistory() {
+    if (historyInputTimer) {
+      clearTimeout(historyInputTimer);
+      historyInputTimer = null;
+      pushHistorySnapshot();
+    }
+  }
+
+  function undoEditorAction() {
+    flushPendingHistory();
+    if (undoStack.length < 2) return;
+    let current = undoStack.pop();
+    redoStack.push(current);
+    applyEditorState(undoStack[undoStack.length - 1]);
+  }
+
+  function redoEditorAction() {
+    flushPendingHistory();
+    if (!redoStack.length) return;
+    let state = redoStack.pop();
+    undoStack.push(state);
+    applyEditorState(state);
+  }
+
+  function scheduleTextHistorySnapshot() {
+    if (historyApplying) return;
+    if (historyInputTimer) clearTimeout(historyInputTimer);
+    historyInputTimer = setTimeout(function () {
+      historyInputTimer = null;
+      pushHistorySnapshot();
+    }, 420);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    let modifier = e.metaKey || e.ctrlKey;
+    if (!modifier || String(e.key).toLowerCase() !== 'z') return;
+    e.preventDefault();
+    if (e.shiftKey) redoEditorAction();
+    else undoEditorAction();
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    installSettingsDropTarget();
+    setTimeout(function () {
+      pushHistorySnapshot();
+      let sidebar = document.getElementById('sidebar');
+      if (!sidebar) return;
+
+      sidebar.addEventListener('change', function (e) {
+        let el = e.target;
+        if (!el || el.type === 'file') return;
+        pushHistorySnapshot();
+      });
+
+      sidebar.addEventListener('input', function (e) {
+        let el = e.target;
+        if (!el || el.type === 'file') return;
+        if (el.id === 'liveText') scheduleTextHistorySnapshot();
+      });
+
+      sidebar.addEventListener('click', function (e) {
+        let action = e.target.closest('button, .color-swatch');
+        if (!action) return;
+        // Capture after inline onclick handlers have changed the editor state.
+        setTimeout(pushHistorySnapshot, 0);
+      });
+    }, 0);
   });
 
   function setup() {
@@ -1448,6 +1889,382 @@
     }
   }
 
+  // -------------------------------------------------------------------------
+  // SILVER MATERIAL LAYER
+  // IMPORTANT: this is deliberately isolated from the original layout engine.
+  // The original p5 geometry/text is first rendered unchanged into a white mask;
+  // this shader only shades those exact pixels. It never re-typesets text, changes
+  // tracking, changes positions, or changes any of the original controls.
+  // -------------------------------------------------------------------------
+  const silverFx = {
+    canvas: null,
+    gl: null,
+    program: null,
+    texture: null,
+    positionBuffer: null,
+    maskGraphics: null,
+    maskW: 0,
+    maskH: 0,
+    failed: false
+  };
+
+  function resetSilverFxRenderer() {
+    // IMPORTANT: keep the existing WebGL context alive.
+    // Creating a brand-new context after every SVG/PDF export can make Chrome
+    // refuse the next context and the preview then falls back to flat gray.
+    // We only clear the temporary mask; the next frame uploads the live mask
+    // and restores the exact same silver material automatically.
+    try {
+      if (silverFx.maskGraphics) silverFx.maskGraphics.clear();
+      if (silverFx.gl) {
+        silverFx.gl.useProgram(silverFx.program);
+        silverFx.gl.bindFramebuffer(silverFx.gl.FRAMEBUFFER, null);
+        silverFx.gl.activeTexture(silverFx.gl.TEXTURE0);
+        silverFx.gl.bindTexture(silverFx.gl.TEXTURE_2D, silverFx.texture);
+      }
+    } catch (e) {
+      console.warn('Silver preview soft reset warning:', e);
+    }
+    silverFx.failed = false;
+  }
+
+  function isSilver(value) {
+    return value === SILVER_METAL;
+  }
+
+  function getCanvasContextFor(gfx) {
+    // Never depend on p5's global `drawingContext` for the live canvas.
+    // p5.svg can temporarily replace that global during an SVG export, which
+    // made the silver layer fall back to flat gray after exporting.
+    if (gfx === window) {
+      if (mainCanvas && mainCanvas.elt) {
+        let liveCtx = mainCanvas.elt.getContext('2d');
+        if (liveCtx) return liveCtx;
+      }
+      let liveCanvas = document.querySelector('#canvas-container canvas');
+      return liveCanvas ? liveCanvas.getContext('2d') : null;
+    }
+    return gfx && gfx.drawingContext ? gfx.drawingContext : null;
+  }
+
+  function canApplySilverFx(gfx) {
+    let ctx = getCanvasContextFor(gfx);
+    return !!(ctx && ctx.canvas && typeof ctx.drawImage === 'function' && String(ctx.canvas.tagName || '').toLowerCase() === 'canvas');
+  }
+
+  function compileSilverShader(gl, type, source) {
+    let shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      console.error('Silver shader compile error:', gl.getShaderInfoLog(shader));
+      gl.deleteShader(shader);
+      return null;
+    }
+    return shader;
+  }
+
+  function ensureSilverFx(w, h) {
+    if (silverFx.failed) return false;
+    if (!silverFx.canvas) {
+      silverFx.canvas = document.createElement('canvas');
+      let gl = silverFx.canvas.getContext('webgl', {
+        alpha: true,
+        antialias: false,
+        premultipliedAlpha: true,
+        preserveDrawingBuffer: true
+      });
+      if (!gl) {
+        silverFx.failed = true;
+        return false;
+      }
+      silverFx.gl = gl;
+
+      const vsSource = `
+        attribute vec2 a_pos;
+        varying vec2 v_uv;
+        void main() {
+          v_uv = a_pos * 0.5 + 0.5;
+          gl_Position = vec4(a_pos, 0.0, 1.0);
+        }
+      `;
+
+      const fsSource = `
+        precision highp float;
+        uniform sampler2D u_mask;
+        uniform vec2 u_res;
+        uniform float u_time;
+        uniform float u_motion;
+        varying vec2 v_uv;
+
+        float maskAt(vec2 uv) {
+          return texture2D(u_mask, clamp(uv, vec2(0.0), vec2(1.0))).a;
+        }
+
+        float gauss(float x, float c, float w) {
+          float q = (x - c) / max(w, 0.0001);
+          return exp(-q*q);
+        }
+
+        // Procedural brushed-metal grain. No external maps.
+        // Horizontal anisotropic micro-grooves with irregular, non-vector spacing.
+        float hash11(float p) {
+          return fract(sin(p * 127.1) * 43758.5453123);
+        }
+
+        float noise1(float x) {
+          float i = floor(x);
+          float f = fract(x);
+          f = f * f * (3.0 - 2.0 * f);
+          return mix(hash11(i), hash11(i + 1.0), f);
+        }
+
+        float brushedGrain(float px, float py) {
+          // Denser, more realistic brushed-metal grain:
+          // many fine horizontal machining marks with soft X drift.
+          float driftA = (noise1(px * 0.0028 + 11.0) - 0.5) * 7.0;
+          float driftB = (noise1(px * 0.0072 + 37.0) - 0.5) * 3.8;
+          float driftC = (noise1(px * 0.0160 + 73.0) - 0.5) * 1.7;
+
+          float g1 = noise1(py * 0.70 + driftA) - 0.5;
+          float g2 = noise1(py * 2.40 + driftB) - 0.5;
+          float g3 = noise1(py * 8.50 + driftA * 0.35 + driftC) - 0.5;
+          float g4 = noise1(py * 18.00 + driftB * 0.25 + driftC) - 0.5;
+          float g5 = noise1(py * 42.00 + driftC * 0.45) - 0.5;
+
+          float grain = g1 * 0.045 + g2 * 0.030 + g3 * 0.018 + g4 * 0.012 + g5 * 0.007;
+
+          // Fine hairline accents, but broken into varying segments so the same line
+          // does not run across the whole word.
+          float row = floor(py * 1.35);
+          float seed = hash11(row + 91.7);
+          float gate = smoothstep(0.72, 0.985, seed);
+          float envelope = 0.55 + 0.45 * noise1(px * 0.010 + seed * 21.0);
+
+          float segCoordA = px * 0.020 + seed * 13.0 + row * 0.031;
+          float segCellA = floor(segCoordA);
+          float segFracA = fract(segCoordA);
+          float segLenA = mix(0.28, 0.78, hash11(segCellA + row * 0.17 + 41.0));
+          float segStartA = mix(0.03, 0.24, hash11(segCellA + row * 0.11 + 19.0));
+          float segMaskA = smoothstep(segStartA, segStartA + 0.05, segFracA) *
+                           (1.0 - smoothstep(segStartA + segLenA - 0.05, segStartA + segLenA, segFracA));
+          segMaskA *= smoothstep(0.18, 0.95, hash11(segCellA + row * 0.23 + 77.0));
+
+          float segCoordB = px * 0.013 + seed * 7.0 + row * 0.049;
+          float segCellB = floor(segCoordB);
+          float segFracB = fract(segCoordB);
+          float segLenB = mix(0.18, 0.58, hash11(segCellB + row * 0.29 + 93.0));
+          float segStartB = mix(0.06, 0.34, hash11(segCellB + row * 0.07 + 57.0));
+          float segMaskB = smoothstep(segStartB, segStartB + 0.04, segFracB) *
+                           (1.0 - smoothstep(segStartB + segLenB - 0.04, segStartB + segLenB, segFracB));
+          segMaskB *= smoothstep(0.34, 0.97, hash11(segCellB + row * 0.13 + 121.0));
+
+          float hairA = (noise1(py * 24.0 + driftB + seed * 5.0) - 0.5) * gate * envelope * segMaskA;
+          float hairB = (noise1(py * 37.0 + driftC + seed * 9.0) - 0.5) * gate * (0.8 + envelope * 0.4) * segMaskB;
+
+          return grain + hairA * 0.042 + hairB * 0.024;
+        }
+
+        vec3 chromeStudio(vec2 uv, vec3 n) {
+          // Keep the exact approved silver color and reflection pattern.
+          float py = gl_FragCoord.y;
+          float px = gl_FragCoord.x;
+
+          // Procedural brushed micro-normal: this bends the reflection itself, not just the brightness.
+          float grain = brushedGrain(px, py);
+          float grainUp = brushedGrain(px, py + 0.90);
+          float grainDown = brushedGrain(px, py - 0.90);
+          float grainSlope = grainUp - grainDown;
+          n = normalize(vec3(n.x + grain * 0.16, n.y + grainSlope * 2.85, max(0.32, n.z - abs(grain) * 0.08)));
+
+          // Keep the exact original reflection movement.
+          float motionShift = sin(u_time * 0.42) * 0.014 * u_motion;
+          float bend = (n.x * 0.055) + (n.y * 0.028);
+          float x = uv.x + bend + motionShift;
+          float y = uv.y + n.y * 0.025;
+
+          // EXACT color values from the approved version.
+          vec3 silver = vec3(0.36, 0.38, 0.40);
+          silver += vec3(0.47, 0.50, 0.53) * gauss(x, 0.18, 0.060);
+          silver -= vec3(0.22, 0.225, 0.23) * gauss(x, 0.31, 0.042);
+          silver += vec3(0.55, 0.58, 0.61) * gauss(x, 0.44, 0.080);
+          silver -= vec3(0.20, 0.205, 0.21) * gauss(x, 0.57, 0.045);
+          silver += vec3(0.41, 0.45, 0.49) * gauss(x, 0.69, 0.065);
+          silver += vec3(0.37, 0.39, 0.41) * gauss(x, 0.86, 0.050);
+
+          silver += vec3(0.15, 0.16, 0.17) * gauss(y, 0.80, 0.20);
+          silver -= vec3(0.085, 0.090, 0.095) * gauss(y, 0.18, 0.17);
+
+          // True procedural BRUSH: visible fine machining grain, grayscale so it cannot shift hue.
+          silver += vec3(grain * 1.42);
+
+          // Keep the exact approved desaturation.
+          float gray = dot(silver, vec3(0.299, 0.587, 0.114));
+          silver = mix(silver, vec3(gray), 0.42);
+
+          return clamp(silver, vec3(0.095), vec3(0.94));
+        }
+
+        void main() {
+          vec2 texel = 1.0 / u_res;
+          float a = maskAt(v_uv);
+
+          // A tiny fixed screen-space extrusion. It is independent of text size.
+          vec2 depthPx = vec2(2.4, -2.8) * texel;
+          float back = maskAt(v_uv - depthPx);
+          float sideAlpha = max(0.0, back - a);
+
+          if (a < 0.002 && sideAlpha < 0.002) {
+            gl_FragColor = vec4(0.0);
+            return;
+          }
+
+          // Fixed-size 45°-style chamfer from the original mask boundary.
+          // Sampling radius depends only on canvas pixels, never on the font size.
+          float r = clamp(min(u_res.x, u_res.y) * 0.0032, 2.0, 5.0);
+          vec2 sx = vec2(r, 0.0) * texel;
+          vec2 sy = vec2(0.0, r) * texel;
+          float ml = maskAt(v_uv - sx);
+          float mr = maskAt(v_uv + sx);
+          float md = maskAt(v_uv - sy);
+          float mu = maskAt(v_uv + sy);
+
+          float gx = ml - mr;
+          float gy = md - mu;
+          float edge = clamp((4.0 - (ml + mr + md + mu)) * 0.34, 0.0, 1.0);
+          vec3 n = normalize(vec3(gx * 2.65, gy * 2.65, mix(1.0, 0.48, edge)));
+
+          vec3 col = chromeStudio(v_uv, n);
+
+          // The chamfer is geometry-like shading, not an outline/stroke.
+          vec3 lightDir = normalize(vec3(-0.55, 0.72, 0.95));
+          float bevelLight = dot(n, lightDir);
+          float bevelSpec = pow(max(0.0, dot(reflect(-lightDir, n), vec3(0.0,0.0,1.0))), 22.0);
+          col += edge * bevelLight * vec3(0.15, 0.16, 0.17);
+          col += edge * bevelSpec * vec3(0.31, 0.34, 0.37);
+
+          if (sideAlpha > a) {
+            vec3 side = vec3(0.18, 0.19, 0.21);
+            side += vec3(0.12, 0.13, 0.15) * gauss(v_uv.x, 0.46 + sin(u_time * 0.42) * 0.01 * u_motion, 0.15);
+            float sideBrush = brushedGrain(gl_FragCoord.x * 0.8, gl_FragCoord.y * 1.15);
+            side += vec3(sideBrush * 0.55);
+            gl_FragColor = vec4(side, sideAlpha * 0.96);
+            return;
+          }
+
+          gl_FragColor = vec4(col, a);
+        }
+      `;
+
+      let vs = compileSilverShader(gl, gl.VERTEX_SHADER, vsSource);
+      let fs = compileSilverShader(gl, gl.FRAGMENT_SHADER, fsSource);
+      if (!vs || !fs) {
+        silverFx.failed = true;
+        return false;
+      }
+
+      let program = gl.createProgram();
+      gl.attachShader(program, vs);
+      gl.attachShader(program, fs);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error('Silver shader link error:', gl.getProgramInfoLog(program));
+        silverFx.failed = true;
+        return false;
+      }
+      silverFx.program = program;
+
+      let buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1,-1,  1,-1, -1, 1,
+        -1, 1,  1,-1,  1, 1
+      ]), gl.STATIC_DRAW);
+      silverFx.positionBuffer = buffer;
+
+      silverFx.texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, silverFx.texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+    }
+
+    if (silverFx.canvas.width !== Math.round(w) || silverFx.canvas.height !== Math.round(h)) {
+      silverFx.canvas.width = Math.max(1, Math.round(w));
+      silverFx.canvas.height = Math.max(1, Math.round(h));
+      silverFx.gl.viewport(0, 0, silverFx.canvas.width, silverFx.canvas.height);
+    }
+    return true;
+  }
+
+  function getSilverMaskGraphics(w, h) {
+    let iw = Math.max(1, Math.round(w));
+    let ih = Math.max(1, Math.round(h));
+    if (!silverFx.maskGraphics || silverFx.maskW !== iw || silverFx.maskH !== ih) {
+      if (silverFx.maskGraphics && silverFx.maskGraphics.remove) silverFx.maskGraphics.remove();
+      silverFx.maskGraphics = createGraphics(iw, ih);
+      if (silverFx.maskGraphics.pixelDensity) silverFx.maskGraphics.pixelDensity(1);
+      silverFx.maskW = iw;
+      silverFx.maskH = ih;
+    }
+    silverFx.maskGraphics.clear();
+    return silverFx.maskGraphics;
+  }
+
+  function shadeSilverMask(maskCanvas, targetW, targetH) {
+    if (!ensureSilverFx(targetW, targetH)) return null;
+    let gl = silverFx.gl;
+    let program = silverFx.program;
+    gl.useProgram(program);
+    gl.disable(gl.DEPTH_TEST);
+    gl.disable(gl.CULL_FACE);
+    gl.disable(gl.BLEND);
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, silverFx.positionBuffer);
+    let posLoc = gl.getAttribLocation(program, 'a_pos');
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, silverFx.texture);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, maskCanvas);
+    gl.uniform1i(gl.getUniformLocation(program, 'u_mask'), 0);
+
+
+    gl.uniform2f(gl.getUniformLocation(program, 'u_res'), targetW, targetH);
+    gl.uniform1f(gl.getUniformLocation(program, 'u_time'), animTime);
+    gl.uniform1f(gl.getUniformLocation(program, 'u_motion'), isAnimating ? 1.0 : 0.0);
+
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    return silverFx.canvas;
+  }
+
+  function compositeSilverMask(gfx, maskGraphics) {
+    let targetW = (gfx === window) ? width : gfx.width;
+    let targetH = (gfx === window) ? height : gfx.height;
+    let shaded = shadeSilverMask(maskGraphics.canvas, targetW, targetH);
+    if (!shaded) return false;
+    let ctx = getCanvasContextFor(gfx);
+    ctx.save();
+    ctx.drawImage(shaded, 0, 0, targetW, targetH);
+    ctx.restore();
+    return true;
+  }
+
+  function drawSilverLines(gfx) {
+    if (!canApplySilverFx(gfx)) return false;
+    let targetW = (gfx === window) ? width : gfx.width;
+    let targetH = (gfx === window) ? height : gfx.height;
+    let mask = getSilverMaskGraphics(targetW, targetH);
+    generateGeometry(mask, true, null);
+    return compositeSilverMask(gfx, mask);
+  }
+
   function getSeamX(colIdx, yPos, skew, colWidth, crossDim) {
     let rowProg = crossDim > 0 ? yPos / crossDim : 0;
     let currentSkew = map(rowProg, 0, 1, -skew, skew) * colWidth;
@@ -1461,6 +2278,7 @@
   }
 
   function generateGeometry(gfx, isMask = false, collector = null) {
+    if (!isMask && !collector && gfx && isSilver(lineColor) && drawSilverLines(gfx)) return;
     let numCols = parseInt(document.getElementById('cols').value);
     let skewInput = parseFloat(document.getElementById('skew').value);
     let skew = map(skewInput, -5, 5, -0.375, 0.375);
@@ -1527,11 +2345,11 @@
             : [xLT, start, xRT, start, xRB, end, xLB, end];
 
           if (collector) {
-            collector.push({ pts: pts, hex: quadColor });
+            collector.push({ pts: pts, hex: isSilver(quadColor) ? SILVER_FALLBACK : quadColor });
           } else {
             gfx.noStroke();
             if (isMask) gfx.fill(255);
-            else gfx.fill(quadColor);
+            else gfx.fill(isSilver(quadColor) ? SILVER_FALLBACK : quadColor);
             gfx.quad(pts[0], pts[1], pts[2], pts[3], pts[4], pts[5], pts[6], pts[7]);
           }
         }
@@ -1540,9 +2358,18 @@
     if (gfx) gfx.pop();
   }
 
-  function drawLiveText(gfx, color, scaleFact = 1.0) {
+  function drawLiveText(gfx, color, scaleFact = 1.0, skipSilverFx = false) {
     let liveTextStr = document.getElementById('liveText').value.toUpperCase();
     if (liveTextStr.trim() === '') return;
+
+    let requestedTextColor = color || liveTextColor;
+    if (!skipSilverFx && isSilver(requestedTextColor) && canApplySilverFx(gfx)) {
+      let targetW = (gfx === window) ? width : gfx.width;
+      let targetH = (gfx === window) ? height : gfx.height;
+      let mask = getSilverMaskGraphics(targetW, targetH);
+      drawLiveText(mask, '#FFFFFF', scaleFact, true);
+      if (compositeSilverMask(gfx, mask)) return;
+    }
 
     gfx.push();
 
@@ -1596,7 +2423,7 @@
 
     let yCompensation = 0;
 
-    gfx.fill(color || liveTextColor);
+    gfx.fill(isSilver(requestedTextColor) ? SILVER_FALLBACK : requestedTextColor);
     gfx.noStroke();
     gfx.textSize(tSize);
 
@@ -1621,6 +2448,311 @@
     }
 
     gfx.pop();
+  }
+
+  function renderSilverLayerIsolated(maskGraphics, targetW, targetH) {
+    // IMPORTANT: SVG export must never touch the live silver preview renderer.
+    // We build the silver raster in a completely isolated temporary WebGL context,
+    // so the export cannot flatten or disturb the on-screen tool preview.
+    let w = Math.max(1, Math.round(targetW));
+    let h = Math.max(1, Math.round(targetH));
+    let out = createGraphics(w, h);
+    if (typeof out.pixelDensity === 'function') out.pixelDensity(1);
+    out.clear();
+
+    try {
+      let tempCanvas = document.createElement('canvas');
+      tempCanvas.width = w;
+      tempCanvas.height = h;
+      let gl = tempCanvas.getContext('webgl', {
+        alpha: true,
+        antialias: false,
+        premultipliedAlpha: true,
+        preserveDrawingBuffer: true
+      });
+      if (!gl) {
+        out.image(maskGraphics, 0, 0, w, h);
+        if (maskGraphics && maskGraphics.remove) maskGraphics.remove();
+        return out;
+      }
+
+      const vsSource = `
+        attribute vec2 a_pos;
+        varying vec2 v_uv;
+        void main() {
+          v_uv = a_pos * 0.5 + 0.5;
+          gl_Position = vec4(a_pos, 0.0, 1.0);
+        }
+      `;
+
+      const fsSource = `
+        precision highp float;
+        uniform sampler2D u_mask;
+        uniform vec2 u_res;
+        uniform float u_time;
+        uniform float u_motion;
+        varying vec2 v_uv;
+
+        float maskAt(vec2 uv) {
+          return texture2D(u_mask, clamp(uv, vec2(0.0), vec2(1.0))).a;
+        }
+
+        float gauss(float x, float c, float w) {
+          float q = (x - c) / max(w, 0.0001);
+          return exp(-q*q);
+        }
+
+        float hash11(float p) {
+          return fract(sin(p * 127.1) * 43758.5453123);
+        }
+
+        float noise1(float x) {
+          float i = floor(x);
+          float f = fract(x);
+          f = f * f * (3.0 - 2.0 * f);
+          return mix(hash11(i), hash11(i + 1.0), f);
+        }
+
+        float brushedGrain(float px, float py) {
+          float driftA = (noise1(px * 0.0028 + 11.0) - 0.5) * 7.0;
+          float driftB = (noise1(px * 0.0072 + 37.0) - 0.5) * 3.8;
+          float driftC = (noise1(px * 0.0160 + 73.0) - 0.5) * 1.7;
+
+          float g1 = noise1(py * 0.70 + driftA) - 0.5;
+          float g2 = noise1(py * 2.40 + driftB) - 0.5;
+          float g3 = noise1(py * 8.50 + driftA * 0.35 + driftC) - 0.5;
+          float g4 = noise1(py * 18.00 + driftB * 0.25 + driftC) - 0.5;
+          float g5 = noise1(py * 42.00 + driftC * 0.45) - 0.5;
+
+          float grain = g1 * 0.045 + g2 * 0.030 + g3 * 0.018 + g4 * 0.012 + g5 * 0.007;
+
+          float row = floor(py * 1.35);
+          float seed = hash11(row + 91.7);
+          float gate = smoothstep(0.72, 0.985, seed);
+          float envelope = 0.55 + 0.45 * noise1(px * 0.010 + seed * 21.0);
+
+          float segCoordA = px * 0.020 + seed * 13.0 + row * 0.031;
+          float segCellA = floor(segCoordA);
+          float segFracA = fract(segCoordA);
+          float segLenA = mix(0.28, 0.78, hash11(segCellA + row * 0.17 + 41.0));
+          float segStartA = mix(0.03, 0.24, hash11(segCellA + row * 0.11 + 19.0));
+          float segMaskA = smoothstep(segStartA, segStartA + 0.05, segFracA) *
+                           (1.0 - smoothstep(segStartA + segLenA - 0.05, segStartA + segLenA, segFracA));
+          segMaskA *= smoothstep(0.18, 0.95, hash11(segCellA + row * 0.23 + 77.0));
+
+          float segCoordB = px * 0.013 + seed * 7.0 + row * 0.049;
+          float segCellB = floor(segCoordB);
+          float segFracB = fract(segCoordB);
+          float segLenB = mix(0.18, 0.58, hash11(segCellB + row * 0.29 + 93.0));
+          float segStartB = mix(0.06, 0.34, hash11(segCellB + row * 0.07 + 57.0));
+          float segMaskB = smoothstep(segStartB, segStartB + 0.04, segFracB) *
+                           (1.0 - smoothstep(segStartB + segLenB - 0.04, segStartB + segLenB, segFracB));
+          segMaskB *= smoothstep(0.34, 0.97, hash11(segCellB + row * 0.13 + 121.0));
+
+          float hairA = (noise1(py * 24.0 + driftB + seed * 5.0) - 0.5) * gate * envelope * segMaskA;
+          float hairB = (noise1(py * 37.0 + driftC + seed * 9.0) - 0.5) * gate * (0.8 + envelope * 0.4) * segMaskB;
+
+          return grain + hairA * 0.042 + hairB * 0.024;
+        }
+
+        vec3 chromeStudio(vec2 uv, vec3 n) {
+          float py = gl_FragCoord.y;
+          float px = gl_FragCoord.x;
+          float grain = brushedGrain(px, py);
+          float grainUp = brushedGrain(px, py + 0.90);
+          float grainDown = brushedGrain(px, py - 0.90);
+          float grainSlope = grainUp - grainDown;
+          n = normalize(vec3(n.x + grain * 0.16, n.y + grainSlope * 2.85, max(0.32, n.z - abs(grain) * 0.08)));
+
+          float motionShift = sin(u_time * 0.42) * 0.014 * u_motion;
+          float bend = (n.x * 0.055) + (n.y * 0.028);
+          float x = uv.x + bend + motionShift;
+          float y = uv.y + n.y * 0.025;
+
+          vec3 silver = vec3(0.36, 0.38, 0.40);
+          silver += vec3(0.47, 0.50, 0.53) * gauss(x, 0.18, 0.060);
+          silver -= vec3(0.22, 0.225, 0.23) * gauss(x, 0.31, 0.042);
+          silver += vec3(0.55, 0.58, 0.61) * gauss(x, 0.44, 0.080);
+          silver -= vec3(0.20, 0.205, 0.21) * gauss(x, 0.57, 0.045);
+          silver += vec3(0.41, 0.45, 0.49) * gauss(x, 0.69, 0.065);
+          silver += vec3(0.37, 0.39, 0.41) * gauss(x, 0.86, 0.050);
+
+          silver += vec3(0.15, 0.16, 0.17) * gauss(y, 0.80, 0.20);
+          silver -= vec3(0.085, 0.090, 0.095) * gauss(y, 0.18, 0.17);
+
+          silver += vec3(grain * 1.42);
+          float gray = dot(silver, vec3(0.299, 0.587, 0.114));
+          silver = mix(silver, vec3(gray), 0.42);
+          return clamp(silver, vec3(0.095), vec3(0.94));
+        }
+
+        void main() {
+          vec2 texel = 1.0 / u_res;
+          float a = maskAt(v_uv);
+          vec2 depthPx = vec2(2.4, -2.8) * texel;
+          float back = maskAt(v_uv - depthPx);
+          float sideAlpha = max(0.0, back - a);
+
+          if (a < 0.002 && sideAlpha < 0.002) {
+            gl_FragColor = vec4(0.0);
+            return;
+          }
+
+          float r = clamp(min(u_res.x, u_res.y) * 0.0032, 2.0, 5.0);
+          vec2 sx = vec2(r, 0.0) * texel;
+          vec2 sy = vec2(0.0, r) * texel;
+          float ml = maskAt(v_uv - sx);
+          float mr = maskAt(v_uv + sx);
+          float md = maskAt(v_uv - sy);
+          float mu = maskAt(v_uv + sy);
+
+          float gx = ml - mr;
+          float gy = md - mu;
+          float edge = clamp((4.0 - (ml + mr + md + mu)) * 0.34, 0.0, 1.0);
+          vec3 n = normalize(vec3(gx * 2.65, gy * 2.65, mix(1.0, 0.48, edge)));
+
+          vec3 col = chromeStudio(v_uv, n);
+          vec3 lightDir = normalize(vec3(-0.55, 0.72, 0.95));
+          float bevelLight = dot(n, lightDir);
+          float bevelSpec = pow(max(0.0, dot(reflect(-lightDir, n), vec3(0.0,0.0,1.0))), 22.0);
+          col += edge * bevelLight * vec3(0.15, 0.16, 0.17);
+          col += edge * bevelSpec * vec3(0.31, 0.34, 0.37);
+
+          if (sideAlpha > a) {
+            vec3 side = vec3(0.18, 0.19, 0.21);
+            side += vec3(0.12, 0.13, 0.15) * gauss(v_uv.x, 0.46 + sin(u_time * 0.42) * 0.01 * u_motion, 0.15);
+            float sideBrush = brushedGrain(gl_FragCoord.x * 0.8, gl_FragCoord.y * 1.15);
+            side += vec3(sideBrush * 0.55);
+            gl_FragColor = vec4(side, sideAlpha * 0.96);
+            return;
+          }
+
+          gl_FragColor = vec4(col, a);
+        }
+      `;
+
+      let vs = compileSilverShader(gl, gl.VERTEX_SHADER, vsSource);
+      let fs = compileSilverShader(gl, gl.FRAGMENT_SHADER, fsSource);
+      if (!vs || !fs) throw new Error('Silver export shader compile failed');
+
+      let program = gl.createProgram();
+      gl.attachShader(program, vs);
+      gl.attachShader(program, fs);
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error('Silver export shader link failed: ' + gl.getProgramInfoLog(program));
+      }
+
+      let buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1,-1,  1,-1, -1, 1,
+        -1, 1,  1,-1,  1, 1
+      ]), gl.STATIC_DRAW);
+      gl.useProgram(program);
+      let posLoc = gl.getAttribLocation(program, 'a_pos');
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+      let texture = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, maskGraphics.canvas);
+      gl.uniform1i(gl.getUniformLocation(program, 'u_mask'), 0);
+      gl.uniform2f(gl.getUniformLocation(program, 'u_res'), w, h);
+      gl.uniform1f(gl.getUniformLocation(program, 'u_time'), animTime);
+      gl.uniform1f(gl.getUniformLocation(program, 'u_motion'), isAnimating ? 1.0 : 0.0);
+
+      gl.disable(gl.DEPTH_TEST);
+      gl.disable(gl.CULL_FACE);
+      gl.disable(gl.BLEND);
+      gl.viewport(0, 0, w, h);
+      gl.clearColor(0,0,0,0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      out.drawingContext.drawImage(tempCanvas, 0, 0, w, h);
+    } catch (err) {
+      console.warn('Isolated silver export fallback:', err);
+      out.image(maskGraphics, 0, 0, w, h);
+    }
+
+    if (maskGraphics && maskGraphics.remove) maskGraphics.remove();
+    return out;
+  }
+
+  function makeSilverTextExportLayer(scaleFact = 1.0) {
+    let mask = createGraphics(width, height);
+    if (typeof mask.pixelDensity === 'function') mask.pixelDensity(1);
+    mask.clear();
+    drawLiveText(mask, '#FFFFFF', scaleFact, true);
+    return renderSilverLayerIsolated(mask, width, height);
+  }
+
+  function makeSilverLinesExportLayer() {
+    let mask = createGraphics(width, height);
+    if (typeof mask.pixelDensity === 'function') mask.pixelDensity(1);
+    mask.clear();
+    generateGeometry(mask, true, null);
+    return renderSilverLayerIsolated(mask, width, height);
+  }
+
+  function drawTextToSvgExport(pg, tempLayers, scaleFact = 1.0) {
+    if (isSilver(liveTextColor)) {
+      let raster = makeSilverTextExportLayer(scaleFact);
+      tempLayers.push(raster);
+      pg.image(raster, 0, 0, width, height);
+    } else {
+      drawLiveText(pg, null, scaleFact);
+    }
+  }
+
+  function drawLinesToSvgExport(pg, tempLayers) {
+    if (isSilver(lineColor)) {
+      let raster = makeSilverLinesExportLayer();
+      tempLayers.push(raster);
+      pg.image(raster, 0, 0, width, height);
+    } else {
+      generateGeometry(pg, false);
+    }
+  }
+
+  function exportSvgWithoutTouchingPreview() {
+    // SVG export is intentionally kept out of draw() and uses only temporary
+    // graphics/WebGL resources. The live canvas, live silver shader and mask
+    // are never resized, cleared or rebound by this operation.
+    let pg = null;
+    let tempLayers = [];
+    try {
+      let target = currentTarget;
+      let textRel = document.getElementById('textLayerRel').value;
+      pg = createGraphics(width, height, SVG);
+      if (typeof pg.pixelDensity === 'function') pg.pixelDensity(1);
+
+      if (!isTransparentBg) pg.background(bgColor);
+
+      if (textRel === 'BELOW' && target !== 'LINES') drawTextToSvgExport(pg, tempLayers);
+      drawLinesToSvgExport(pg, tempLayers);
+      if (textRel === 'BETWEEN') drawTextToSvgExport(pg, tempLayers);
+      if (textRel === 'ABOVE') drawTextToSvgExport(pg, tempLayers);
+
+      pg.save(getExportFilename() + '.svg');
+    } catch (err) {
+      console.error('SVG Export Error:', err);
+    } finally {
+      // Cleanup only the temporary export resources. Nothing from silverFx is touched.
+      setTimeout(function () {
+        for (let layer of tempLayers) {
+          if (layer && layer.remove) layer.remove();
+        }
+        if (pg && pg.remove) pg.remove();
+      }, 250);
+    }
   }
 
   function draw() {
@@ -1661,7 +2793,8 @@
     } else {
       background(bgColor);
       // מונע "דליפות" ערוץ אלפא לפריים הראשון של הוידאו
-      drawingContext.globalAlpha = 1.0; 
+      let liveCtx = getCanvasContextFor(window);
+      if (liveCtx) liveCtx.globalAlpha = 1.0;
     }
 
     let target = currentTarget, textRel = document.getElementById('textLayerRel').value;
@@ -1711,23 +2844,37 @@
         if (exportFormat === 'svg') {
           let pg = createGraphics(width, height, SVG);
           if (typeof pg.pixelDensity === 'function') pg.pixelDensity(1);
+          let tempLayers = [];
 
           if (!isTransparentBg) pg.background(bgColor);
 
-          if (textRel === 'BELOW' && target !== 'LINES') drawLiveText(pg);
-          generateGeometry(pg, false);
-          if (textRel === 'BETWEEN') drawLiveText(pg);
-          if (textRel === 'ABOVE') drawLiveText(pg);
+          // Keep ordinary artwork vector. Only the shader-based silver layer is
+          // flattened into an embedded raster image so the SVG looks exactly like preview.
+          if (textRel === 'BELOW' && target !== 'LINES') drawTextToSvgExport(pg, tempLayers);
+          drawLinesToSvgExport(pg, tempLayers);
+          if (textRel === 'BETWEEN') drawTextToSvgExport(pg, tempLayers);
+          if (textRel === 'ABOVE') drawTextToSvgExport(pg, tempLayers);
 
           pg.save(getExportFilename() + ".svg");
-          setTimeout(() => pg.remove(), 150);
+          setTimeout(() => {
+            for (let layer of tempLayers) {
+              if (layer && layer.remove) layer.remove();
+            }
+            pg.remove();
+          }, 250);
         } else {
           saveCanvas(getExportFilename(), exportFormat);
         }
       } catch (err) {
         console.error("Export Error:", err);
       } finally {
+        let finishedFormat = exportFormat;
         isExporting = false;
+        if (finishedFormat === 'svg') {
+          setTimeout(function () {
+            if (typeof redraw === 'function') redraw();
+          }, 0);
+        }
       }
     }
   }
@@ -1736,7 +2883,12 @@
     // In PRINT (CMYK) mode: JPG -> true 4-channel CMYK JPEG, vector -> CMYK PDF.
     if (isCmykMode && format === 'jpg') { exportCmykJpg(); return; }
     if (isCmykMode && format === 'svg') { exportCmykPdf(); return; }
-    exportFormat = format; isExporting = true;
+    if (format === 'svg') {
+      exportSvgWithoutTouchingPreview();
+      return;
+    }
+    exportFormat = format;
+    isExporting = true;
   }
 
   function toggleRecord(asLoop = false) {
